@@ -223,8 +223,16 @@ function renderSection(section, index, isHome) {
       return `
         <section class="home-section company-section">
           <div class="container company-inner">
-            <div class="company-image">
-              <div class="company-image-placeholder">Kế toán Quỳnh Phát</div>
+            <div class="company-image-wrapper">
+              <img src="/about-us.jpg" alt="Về Kế toán Quỳnh Phát" class="company-image-real">
+              <div class="company-image-overlay">
+                <div class="overlay-badge">
+                  <div class="badge-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  </div>
+                  <div class="badge-text">Uy tín &<br>Trách nhiệm</div>
+                </div>
+              </div>
             </div>
             <div class="company-info">
               <p class="section-eyebrow">Về chúng tôi</p>
@@ -264,7 +272,7 @@ function renderSection(section, index, isHome) {
       return `
         <section class="home-section cta-section">
           <div class="container cta-grid">
-            <div class="cta-card cta-green">
+            <div class="cta-card cta-primary">
               <p class="section-eyebrow">Kiến thức hữu ích</p>
               <h3>Kiến thức kế toán và thuế</h3>
               <p>Cập nhật các bài viết về kế toán, thuế và quy định pháp luật liên quan, được rà soát theo thời gian và dựa trên nguồn văn bản chính thức.</p>
@@ -341,7 +349,7 @@ function renderHeader(currentPath) {
     <header class="site-header">
       <div class="container header-inner">
         <a href="/" class="site-logo" aria-label="Trang chủ">
-          <img src="/assets/logo.webp" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
+          <img src="/assets/logo.png" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
         </a>
         <nav aria-label="Điều hướng chính" class="main-nav">
           <ul>${items}</ul>
@@ -366,7 +374,7 @@ function renderFooter(currentPath) {
       <div class="container footer-grid">
         <div class="footer-brand-col">
           <a href="/" class="site-logo footer-logo">
-            <img src="/assets/logo.webp" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
+            <img src="/assets/logo.png" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
           </a>
           <p class="footer-about">Đồng hành cùng doanh nghiệp trong công tác kế toán, thuế và hồ sơ vận hành.</p>
         </div>
@@ -536,9 +544,16 @@ async function readBuildEnv() {
 async function copyPublicFiles() {
   const publicDir = join(projectRoot, "public");
   await mkdir(join(outputDir, "assets"), { recursive: true });
-  await writeFile(join(outputDir, "favicon.svg"), await readFile(join(publicDir, "favicon.svg")));
+  await writeFile(join(outputDir, "favicon.ico"), await readFile(join(publicDir, "favicon.ico")));
+  await writeFile(join(outputDir, "about-us.jpg"), await readFile(join(publicDir, "about-us.jpg")));
+  await writeFile(join(outputDir, "favicon-16x16.png"), await readFile(join(publicDir, "favicon-16x16.png")));
+  await writeFile(join(outputDir, "favicon-32x32.png"), await readFile(join(publicDir, "favicon-32x32.png")));
+  await writeFile(join(outputDir, "apple-touch-icon.png"), await readFile(join(publicDir, "apple-touch-icon.png")));
+  await writeFile(join(outputDir, "android-chrome-192x192.png"), await readFile(join(publicDir, "android-chrome-192x192.png")));
+  await writeFile(join(outputDir, "android-chrome-512x512.png"), await readFile(join(publicDir, "android-chrome-512x512.png")));
+  await writeFile(join(outputDir, "site.webmanifest"), await readFile(join(publicDir, "site.webmanifest")));
   await writeFile(join(outputDir, "assets", "structure.css"), await readFile(join(publicDir, "structure.css")));
-  await writeFile(join(outputDir, "assets", "logo.webp"), await readFile(join(publicDir, "logo.webp")));
+  await writeFile(join(outputDir, "assets", "logo.png"), await readFile(join(publicDir, "logo.png")));
   await writeFile(join(outputDir, "assets", "hero-bg.webp"), await readFile(join(publicDir, "hero-bg.webp")));
 }
 

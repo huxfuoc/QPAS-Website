@@ -431,7 +431,7 @@ function renderHeader(currentPath) {
     <header class="site-header">
       <div class="container header-inner">
         <a href="/" class="site-logo" aria-label="Trang chủ">
-          <img src="/assets/logo.webp" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
+          <img src="/assets/logo.png" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
         </a>
         <nav aria-label="Điều hướng chính" class="main-nav">
           <ul>${items}</ul>
@@ -456,7 +456,7 @@ function renderFooter(currentPath) {
       <div class="container footer-grid">
         <div class="footer-brand-col">
           <a href="/" class="site-logo footer-logo">
-            <img src="/assets/logo.webp" alt="Logo Kế toán Quỳnh Phát" class="logo-image" width="1254" height="705">
+            <img src="/assets/logo.png" alt="Logo Kế toán Quỳnh Phát" class="logo-image" width="1254" height="705">
           </a>
           <p class="footer-about">Đồng hành cùng doanh nghiệp trong công tác kế toán, thuế và hồ sơ vận hành.</p>
         </div>
