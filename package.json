@@ -1,0 +1,24 @@
+{
+  "name": "quynh-phat-accounting-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static, crawlable website scaffold for Quynh Phat Accounting Services.",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "build:legacy": "node scripts/build.mjs",
+    "preview": "next start",
+    "preview:legacy": "node scripts/serve.mjs",
+    "content-report": "node scripts/export-content-report.mjs"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "next": "16.3.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  }
+}
