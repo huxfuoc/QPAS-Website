@@ -25,7 +25,10 @@ export default function RootLayout({ children }) {
         />
         <link rel="stylesheet" href="/structure.css" />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <script src="/slider.js" defer></script>
+      </body>
     </html>
   );
 }

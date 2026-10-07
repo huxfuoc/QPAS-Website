@@ -11,23 +11,16 @@ export function renderSiteContent(page) {
   const contactDetails = page.path === "/lien-he/" ? renderContactDetails() : "";
   const headerContent = isHome
     ? `
-      <section class="hero-section hero-full-bg">
-        <div class="hero-bg-image">
-          <div class="hero-bg-fade"></div>
+      <section class="hero-section hero-slider-container" id="hero-slider">
+        <div class="hero-image-slider">
+          <img src="/hero-slider-1.webp" class="hero-slide-img slide-1 active" alt="Hero 1" />
+          <img src="/hero-slider-2.webp" class="hero-slide-img slide-2" alt="Hero 2" />
         </div>
-        <div class="container hero-inner relative z-10">
-          <div class="hero-content">
-            <h1 class="hero-title">
-              Nâng tầm doanh nghiệp với dịch vụ <span class="text-gradient">Kế Toán & Thuế</span>
-            </h1>
-            <p class="hero-desc">
-              ${escapeHtml(page.intro ?? "Đồng hành cùng sự phát triển bền vững của doanh nghiệp thông qua các giải pháp tối ưu, an toàn và bảo mật tuyệt đối.")}
-            </p>
-            <div class="hero-actions">
-              <a href="/lien-he/" class="btn btn-primary btn-glow btn-lg">Nhận tư vấn ngay <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-              <a href="/dich-vu/" class="btn btn-outline-glass btn-lg">Khám phá dịch vụ</a>
-            </div>
-          </div>
+        <button class="slider-nav slider-prev" aria-label="Previous">&lsaquo;</button>
+        <button class="slider-nav slider-next" aria-label="Next">&rsaquo;</button>
+        <div class="slider-dots">
+          <button class="slider-dot active" aria-label="Slide 1" data-index="0"></button>
+          <button class="slider-dot" aria-label="Slide 2" data-index="1"></button>
         </div>
       </section>
     `
@@ -427,20 +420,32 @@ function renderHeader(currentPath) {
     return `<li class="has-dropdown"><a href="${item.path}" class="nav-link"${dataCurrent}>${escapeHtml(item.label)} ${chevronDown}</a>${children}</li>`;
   }).join("\n");
 
+  const phoneIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>`;
+
   return `
     <header class="site-header">
-      <div class="container header-inner">
-        <a href="/" class="site-logo" aria-label="Trang chủ">
-          <img src="/assets/logo.png" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
-        </a>
-        <nav aria-label="Điều hướng chính" class="main-nav">
-          <ul>${items}</ul>
-        </nav>
-        <div class="header-actions">
-          <a href="/lien-he/" class="btn btn-primary btn-sm">${btnIcon} Nhận tư vấn</a>
-          <button class="mobile-menu-btn" aria-label="Mở menu" onclick="document.querySelector('.main-nav').classList.toggle('is-open')">
-            ${menuIcon}
-          </button>
+      <div class="header-top">
+        <div class="container header-top-inner">
+          <a href="/" class="site-logo" aria-label="Trang chủ">
+            <img src="/assets/logo.png" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
+          </a>
+          
+          <div class="header-slogan">Tận tâm – Uy tín – Chuyên nghiệp – Chuẩn xác – Đồng hành cùng doanh nghiệp phát triển.</div>
+          
+          <div class="header-actions">
+            <a href="tel:${business.phoneHref}" class="btn btn-primary btn-sm">${phoneIconSvg} ${business.phoneDisplay}</a>
+            <button class="mobile-menu-btn" aria-label="Mở menu" onclick="document.querySelector('.main-nav').classList.toggle('is-open')">
+              ${menuIcon}
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="header-bottom">
+        <div class="container">
+          <nav aria-label="Điều hướng chính" class="main-nav">
+            <ul>${items}</ul>
+          </nav>
         </div>
       </div>
     </header>`;

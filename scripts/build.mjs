@@ -59,23 +59,16 @@ function renderPage(page) {
 
   const headerContent = isHome 
     ? `
-      <section class="hero-section hero-full-bg">
-        <div class="hero-bg-image">
-          <div class="hero-bg-fade"></div>
+      <section class="hero-section hero-slider-container" id="hero-slider">
+        <div class="hero-image-slider">
+          <img src="/hero-slider-1.webp" class="hero-slide-img slide-1 active" alt="Hero 1" />
+          <img src="/hero-slider-2.webp" class="hero-slide-img slide-2" alt="Hero 2" />
         </div>
-        <div class="container hero-inner relative z-10">
-          <div class="hero-content">
-            <h1 class="hero-title">
-              Nâng tầm doanh nghiệp với dịch vụ <span class="text-gradient">Kế Toán & Thuế</span>
-            </h1>
-            <p class="hero-desc">
-              ${escapeHtml(page.intro ?? "Đồng hành cùng sự phát triển bền vững của doanh nghiệp thông qua các giải pháp tối ưu, an toàn và bảo mật tuyệt đối.")}
-            </p>
-            <div class="hero-actions">
-              <a href="/lien-he/" class="btn btn-primary btn-glow btn-lg">Nhận tư vấn ngay <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-              <a href="/dich-vu/" class="btn btn-outline-glass btn-lg">Khám phá dịch vụ</a>
-            </div>
-          </div>
+        <button class="slider-nav slider-prev" aria-label="Previous">&lsaquo;</button>
+        <button class="slider-nav slider-next" aria-label="Next">&rsaquo;</button>
+        <div class="slider-dots">
+          <button class="slider-dot active" aria-label="Slide 1" data-index="0"></button>
+          <button class="slider-dot" aria-label="Slide 2" data-index="1"></button>
         </div>
       </section>
     `
@@ -554,7 +547,9 @@ async function copyPublicFiles() {
   await writeFile(join(outputDir, "site.webmanifest"), await readFile(join(publicDir, "site.webmanifest")));
   await writeFile(join(outputDir, "assets", "structure.css"), await readFile(join(publicDir, "structure.css")));
   await writeFile(join(outputDir, "assets", "logo.png"), await readFile(join(publicDir, "logo.png")));
-  await writeFile(join(outputDir, "assets", "hero-bg.webp"), await readFile(join(publicDir, "hero-bg.webp")));
+  await writeFile(join(outputDir, "hero-slider-1.webp"), await readFile(join(publicDir, "hero-slider-1.webp")));
+  await writeFile(join(outputDir, "hero-slider-2.webp"), await readFile(join(publicDir, "hero-slider-2.webp")));
+  await writeFile(join(outputDir, "slider.js"), await readFile(join(publicDir, "slider.js")));
 }
 
 function escapeHtml(value) {

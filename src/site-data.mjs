@@ -10,8 +10,8 @@ export const business = {
   registeredOn: "28/09/2026",
   registeredAddress: "232/29 Ngô Quyền, Phường Diên Hồng, Thành phố Hồ Chí Minh, Việt Nam",
   email: "dichvuketoanquynhphat@gmail.com",
-  phoneDisplay: "0961 076 256",
-  phoneHref: "+84961076256",
+  phoneDisplay: "039 3276052",
+  phoneHref: "+84393276052",
   language: "vi-VN",
 };
 

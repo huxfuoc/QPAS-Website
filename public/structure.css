@@ -86,18 +86,43 @@ h1, h2, h3, h4, h5, p { margin: 0; }
 }
 
 /* Header */
+/* Header */
 .site-header {
-  border-bottom: 1px solid var(--color-border);
-  background: white;
   position: sticky;
   top: 0;
   z-index: 50;
+  background: white;
+  box-shadow: var(--shadow-sm);
 }
-.header-inner {
+.header-top {
+  border-bottom: 1px solid var(--color-border);
+}
+.header-top-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 5rem;
+  gap: 1rem;
+}
+.header-slogan {
+  display: none;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  flex: 1;
+}
+@media (min-width: 992px) {
+  .header-slogan {
+    display: block;
+  }
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 .site-logo {
   display: flex;
@@ -109,7 +134,9 @@ h1, h2, h3, h4, h5, p { margin: 0; }
   height: 4rem;
   object-fit: contain;
 }
-
+.header-bottom {
+  background: white;
+}
 .main-nav {
   display: none;
   position: absolute;
@@ -124,11 +151,6 @@ h1, h2, h3, h4, h5, p { margin: 0; }
 }
 .main-nav.is-open {
   display: block;
-}
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
 }
 .mobile-menu-btn {
   display: block;
@@ -164,6 +186,7 @@ h1, h2, h3, h4, h5, p { margin: 0; }
   .main-nav > ul {
     flex-direction: row;
     gap: 2rem;
+    justify-content: center;
   }
 }
 .nav-link {
@@ -174,6 +197,7 @@ h1, h2, h3, h4, h5, p { margin: 0; }
   display: flex;
   align-items: center;
   gap: 0.25rem;
+  padding: 1rem 0;
 }
 .nav-link:hover, .nav-link[aria-current="page"] {
   color: var(--color-primary);
@@ -222,24 +246,87 @@ h1, h2, h3, h4, h5, p { margin: 0; }
   background-color: #fafafc;
   overflow: hidden;
 }
-.hero-bg-image {
+.hero-slider-container {
+  width: 100%;
+  position: relative;
+  background-color: #fafafc;
+  overflow: hidden;
+  margin-top: -1px; /* To fix any subpixel rendering gaps */
+}
+.hero-image-slider {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+.hero-slide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0;
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: url('/assets/hero-bg.webp?v=2') no-repeat right center;
-  background-size: cover;
+  top: 0; left: 0;
+  transition: opacity 1s ease-in-out;
+  object-fit: contain;
   z-index: 0;
 }
-.hero-bg-fade {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to right, #fafafc 0%, rgba(250, 250, 252, 0.95) 45%, rgba(250, 250, 252, 0) 100%);
+.hero-slide-img.slide-1 {
+  position: relative;
 }
+.hero-slide-img.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Slider Navigation Arrows */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+  padding-bottom: 4px;
+}
+.slider-nav:hover { background: rgba(0, 0, 0, 0.6); }
+.slider-prev { left: 20px; }
+.slider-next { right: 20px; }
+
+/* Slider Pagination Dots */
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+.slider-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s;
+}
+.slider-dot:hover { background: rgba(0, 0, 0, 0.5); border-color: rgba(0,0,0,0.5); }
+.slider-dot.active { background: rgba(0, 0, 0, 0.7); border-color: rgba(0, 0, 0, 0.7); }
 @media (max-width: 991px) {
-  .hero-bg-image {
-    background-position: 70% center;
-  }
-  .hero-bg-fade {
-    background: linear-gradient(to bottom, rgba(250, 250, 252, 0.98) 0%, rgba(250, 250, 252, 0.9) 60%, rgba(250, 250, 252, 0.4) 100%);
+  .hero-bg-slide {
+    background-position: 70% center !important;
   }
 }
 .hero-inner {
