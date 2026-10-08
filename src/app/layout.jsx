@@ -27,6 +27,9 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
+        <a href="https://zalo.me/0393276052" target="_blank" rel="noopener noreferrer" className="zalo-floating-icon" aria-label="Liên hệ Zalo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg?utm_source=vi.wikipedia.org&utm_campaign=index&utm_content=original" alt="Zalo" />
+        </a>
         <script src="/slider.js" defer></script>
       </body>
     </html>
