@@ -13,8 +13,9 @@ export function renderSiteContent(page) {
     ? `
       <section class="hero-section hero-slider-container" id="hero-slider">
         <div class="hero-image-slider">
-          <img src="/hero-slider-1.webp" class="hero-slide-img slide-1 active" alt="Hero 1" />
-          <img src="/hero-slider-2.webp" class="hero-slide-img slide-2" alt="Hero 2" />
+          <img src="/hero-slide-sevenpens.webp" class="hero-slider-sizer" aria-hidden="true" alt="" />
+          <img src="/hero-slide-sevenpens.webp" class="hero-slide-img slide-1 active" alt="Modern Finance Office" />
+          <img src="/hero-slide-qpas.webp" class="hero-slide-img slide-2" alt="Dịch vụ Kế toán Quỳnh Phát" />
         </div>
         <button class="slider-nav slider-prev" aria-label="Previous">&lsaquo;</button>
         <button class="slider-nav slider-next" aria-label="Next">&rsaquo;</button>
@@ -430,10 +431,15 @@ function renderHeader(currentPath) {
             <img src="/assets/logo.png" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
           </a>
           
+          <div class="header-company-info">
+            <div class="company-name">DỊCH VỤ KẾ TOÁN QUỲNH PHÁT</div>
+            <div class="company-phone">TEL-ZALO 039 3276052</div>
+          </div>
+          
           <div class="header-slogan">Tận tâm – Uy tín – Chuyên nghiệp – Chuẩn xác – Minh Bạch – Đồng hành cùng doanh nghiệp phát triển</div>
           
           <div class="header-actions">
-            <a href="tel:${business.phoneHref}" class="btn btn-primary btn-sm">${phoneIconSvg} ${business.phoneDisplay}</a>
+            <a href="tel:${business.phoneHref}" class="btn btn-primary btn-sm header-contact-mobile">${phoneIconSvg} ${business.phoneDisplay}</a>
             <button class="mobile-menu-btn" aria-label="Mở menu" onclick="document.querySelector('.main-nav').classList.toggle('is-open')">
               ${menuIcon}
             </button>
@@ -442,10 +448,13 @@ function renderHeader(currentPath) {
       </div>
       
       <div class="header-bottom">
-        <div class="container">
+        <div class="container header-bottom-inner">
           <nav aria-label="Điều hướng chính" class="main-nav">
             <ul>${items}</ul>
           </nav>
+          <div class="header-contact-desktop">
+            <a href="/lien-he/" class="btn btn-primary btn-sm">${phoneIconSvg} ${business.phoneDisplay}</a>
+          </div>
         </div>
       </div>
     </header>`;

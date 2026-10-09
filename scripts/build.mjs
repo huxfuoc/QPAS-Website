@@ -61,8 +61,9 @@ function renderPage(page) {
     ? `
       <section class="hero-section hero-slider-container" id="hero-slider">
         <div class="hero-image-slider">
-          <img src="/hero-slider-1.webp" class="hero-slide-img slide-1 active" alt="Hero 1" />
-          <img src="/hero-slider-2.webp" class="hero-slide-img slide-2" alt="Hero 2" />
+          <img src="/hero-slide-sevenpens.webp" class="hero-slider-sizer" aria-hidden="true" alt="" />
+          <img src="/hero-slide-sevenpens.webp" class="hero-slide-img slide-1 active" alt="Modern Finance Office" />
+          <img src="/hero-slide-qpas.webp" class="hero-slide-img slide-2" alt="Dịch vụ Kế toán Quỳnh Phát" />
         </div>
         <button class="slider-nav slider-prev" aria-label="Previous">&lsaquo;</button>
         <button class="slider-nav slider-next" aria-label="Next">&rsaquo;</button>
@@ -338,20 +339,40 @@ function renderHeader(currentPath) {
     return `<li class="has-dropdown"><a href="${item.path}" class="nav-link"${dataCurrent}>${escapeHtml(item.label)} ${chevronDown}</a>${children}</li>`;
   }).join("\n");
 
+  const phoneIconSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>`;
+
   return `
     <header class="site-header">
-      <div class="container header-inner">
-        <a href="/" class="site-logo" aria-label="Trang chủ">
-          <img src="/assets/logo.png" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
-        </a>
-        <nav aria-label="Điều hướng chính" class="main-nav">
-          <ul>${items}</ul>
-        </nav>
-        <div class="header-actions">
-          <a href="/lien-he/" class="btn btn-primary btn-sm">${btnIcon} Nhận tư vấn</a>
-          <button class="mobile-menu-btn" aria-label="Mở menu" onclick="document.querySelector('.main-nav').classList.toggle('is-open')">
-            ${menuIcon}
-          </button>
+      <div class="header-top">
+        <div class="container header-top-inner">
+          <a href="/" class="site-logo" aria-label="Trang chủ">
+            <img src="/assets/logo.png" alt="Logo Kế toán Quỳnh Phát" class="logo-image">
+          </a>
+          
+          <div class="header-company-info">
+            <div class="company-name">DỊCH VỤ KẾ TOÁN QUỲNH PHÁT</div>
+            <div class="company-phone">TEL-ZALO 039 3276052</div>
+          </div>
+          
+          <div class="header-slogan">Tận tâm – Uy tín – Chuyên nghiệp – Chuẩn xác – Minh Bạch – Đồng hành cùng doanh nghiệp phát triển</div>
+          
+          <div class="header-actions">
+            <a href="tel:${business.phoneHref}" class="btn btn-primary btn-sm header-contact-mobile">${phoneIconSvg} ${business.phoneDisplay}</a>
+            <button class="mobile-menu-btn" aria-label="Mở menu" onclick="document.querySelector('.main-nav').classList.toggle('is-open')">
+              ${menuIcon}
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="header-bottom">
+        <div class="container header-bottom-inner">
+          <nav aria-label="Điều hướng chính" class="main-nav">
+            <ul>${items}</ul>
+          </nav>
+          <div class="header-contact-desktop">
+            <a href="/lien-he/" class="btn btn-primary btn-sm">${phoneIconSvg} ${business.phoneDisplay}</a>
+          </div>
         </div>
       </div>
     </header>`;
@@ -547,8 +568,8 @@ async function copyPublicFiles() {
   await writeFile(join(outputDir, "site.webmanifest"), await readFile(join(publicDir, "site.webmanifest")));
   await writeFile(join(outputDir, "assets", "structure.css"), await readFile(join(publicDir, "structure.css")));
   await writeFile(join(outputDir, "assets", "logo.png"), await readFile(join(publicDir, "logo.png")));
-  await writeFile(join(outputDir, "hero-slider-1.webp"), await readFile(join(publicDir, "hero-slider-1.webp")));
-  await writeFile(join(outputDir, "hero-slider-2.webp"), await readFile(join(publicDir, "hero-slider-2.webp")));
+  await writeFile(join(outputDir, "hero-slide-sevenpens.webp"), await readFile(join(publicDir, "hero-slide-sevenpens.webp")));
+  await writeFile(join(outputDir, "hero-slide-qpas.webp"), await readFile(join(publicDir, "hero-slide-qpas.webp")));
   await writeFile(join(outputDir, "slider.js"), await readFile(join(publicDir, "slider.js")));
 }
 
